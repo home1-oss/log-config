@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.home1</groupId>
+        <artifactId>maven-build</artifactId>
+        <version>0.0.1.OSS-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>log-config</artifactId>
+    <description>Log config file in classpath, avoid copy and paste log config file across projects</description>
+    <name>log-config</name>
+    <packaging>pom</packaging>
+    <version>0.0.1.OSS-SNAPSHOT</version>
+
+    <properties>
+    </properties>
+
+    <build>
+    </build>
+
+    <modules>
+        <module>log4j2-rolling-config</module>
+        <module>logback-logstash-config</module>
+    </modules>
+
+    <profiles>
+        <!-- @formatter:off -->
+        <profile>
+            <id>default-dependency-management</id>
+            <activation>
+                <file><exists>${basedir}/.default-dependency-management</exists></file>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>cn.home1</groupId>
+                        <artifactId>deps-spring-boot-1.5.12.RELEASE</artifactId>
+                        <version>0.0.1.OSS-SNAPSHOT</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+        <!-- @formatter:on -->
+    </profiles>
+
+    <!-- @formatter:off -->
+    <repositories>
+        <!-- Make artifacts in OSSRH-snapshots available -->
+        <repository>
+            <id>OSSRH-snapshots</id>
+            <name>central snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled><updatePolicy>${repositories.snapshots.updatePolicy}</updatePolicy></snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>central</name>
+            <url>http://repo1.maven.org/maven2</url>
+            <releases><enabled>true</enabled><updatePolicy>${repositories.releases.updatePolicy}</updatePolicy></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <!-- @formatter:on -->
+</project>
