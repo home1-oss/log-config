@@ -53,6 +53,13 @@
     <repositories>
         <!-- Make artifacts in OSSRH-snapshots available -->
         <repository>
+            <id>OSSRH-releases</id>
+            <name>central releases</name>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+            <releases><enabled>true</enabled><updatePolicy>${repositories.releases.updatePolicy}</updatePolicy></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
             <id>OSSRH-snapshots</id>
             <name>central snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
