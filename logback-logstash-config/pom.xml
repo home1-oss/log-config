@@ -23,7 +23,7 @@
 
     <dependencies>
         <!-- @formatter:off -->
-        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-logging</artifactId></dependency>
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-logging</artifactId><scope>compile</scope></dependency>
         <dependency><groupId>net.logstash.logback</groupId><artifactId>logstash-logback-encoder</artifactId><version>${logstash.logback.version}</version></dependency>
         <!-- @formatter:on -->
     </dependencies>
