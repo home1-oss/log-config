@@ -1,8 +1,14 @@
 
+*.iml
+.idea/
+
+.DS_Store
+
 *.asc
 git.properties
 
-.DS_Store
-*.iml
+**/src/site/markdown/README.md
+**/src/site/markdown/src/readme
+**/src/site/resources
 
 target
