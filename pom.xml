@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>maven-build</artifactId>
-        <version>0.0.1.OSS-SNAPSHOT</version>
+        <version>0.0.1.OSS</version>
     </parent>
 
     <artifactId>log-config</artifactId>
@@ -39,9 +39,9 @@
                     <dependency>
                         <groupId>cn.home1</groupId>
                         <artifactId>deps-spring-boot-1.5.12.RELEASE</artifactId>
-                        <version>0.0.1.OSS-SNAPSHOT</version>
-                        <type>pom</type>
+                        <version>0.0.1.OSS</version>
                         <scope>import</scope>
+                        <type>pom</type>
                     </dependency>
                 </dependencies>
             </dependencyManagement>
