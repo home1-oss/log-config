@@ -6,52 +6,54 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>maven-build</artifactId>
-        <version>0.0.1.OSS-SNAPSHOT</version>
+        <version>0.0.5.OSS</version>
     </parent>
 
     <artifactId>log-config</artifactId>
     <description>Log config file in classpath, avoid copy and paste log config file across projects</description>
     <name>log-config</name>
     <packaging>pom</packaging>
-    <version>0.0.1.OSS-SNAPSHOT</version>
+    <version>0.0.2.OSS</version>
 
     <properties>
+        <disruptor.version>3.3.6</disruptor.version>
+        <logback.version>1.2.3</logback.version>
+        <logstash.logback.version>5.0</logstash.logback.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
     </properties>
 
     <build>
     </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- @formatter:off -->
+            <dependency><groupId>ch.qos.logback</groupId><artifactId>logback-core</artifactId><version>${logback.version}</version></dependency>
+            <dependency><groupId>com.lmax</groupId><artifactId>disruptor</artifactId><version>${disruptor.version}</version></dependency>
+            <dependency><groupId>net.logstash.logback</groupId><artifactId>logstash-logback-encoder</artifactId><version>${logstash.logback.version}</version></dependency>
+            <dependency><groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId><version>${slf4j.version}</version></dependency>
+            <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-log4j2</artifactId><version>${spring-boot.version}</version></dependency>
+            <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-logging</artifactId><version>${spring-boot.version}</version></dependency>
+            <!-- @formatter:on -->
+        </dependencies>
+    </dependencyManagement>
 
     <modules>
         <module>log4j2-rolling-config</module>
         <module>logback-logstash-config</module>
     </modules>
 
-    <profiles>
-        <!-- @formatter:off -->
-        <profile>
-            <id>default-dependency-management</id>
-            <activation>
-                <file><exists>${basedir}/.default-dependency-management</exists></file>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>cn.home1</groupId>
-                        <artifactId>deps-spring-boot-1.5.12.RELEASE</artifactId>
-                        <version>0.0.1.OSS-SNAPSHOT</version>
-                        <type>pom</type>
-                        <scope>import</scope>
-                    </dependency>
-                </dependencies>
-            </dependencyManagement>
-        </profile>
-        <!-- @formatter:on -->
-    </profiles>
-
     <!-- @formatter:off -->
     <repositories>
-        <!-- Make artifacts in OSSRH-snapshots available -->
+        <!-- Make artifacts in OSSRH repositories available -->
+        <repository>
+            <id>OSSRH-releases</id>
+            <name>central releases</name>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+            <releases><enabled>true</enabled><updatePolicy>${repositories.releases.updatePolicy}</updatePolicy></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
         <repository>
             <id>OSSRH-snapshots</id>
             <name>central snapshots</name>
