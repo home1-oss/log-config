@@ -12,3 +12,4 @@ git.properties
 **/src/site/resources
 
 target
+*.log

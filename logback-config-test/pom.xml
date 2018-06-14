@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.home1</groupId>
+        <artifactId>log-config</artifactId>
+        <version>0.0.4.OSS</version>
+    </parent>
+
+    <artifactId>logback-config-test</artifactId>
+    <description>Logback config for tests</description>
+    <name>logback-config-test</name>
+    <packaging>jar</packaging>
+
+    <properties>
+    </properties>
+
+    <build>
+    </build>
+
+    <dependencies>
+        <!-- @formatter:off -->
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-logging</artifactId></dependency>
+
+        <dependency><groupId>com.github.stefanbirkner</groupId><artifactId>system-rules</artifactId><scope>test</scope></dependency>
+        <dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><scope>provided</scope></dependency>
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-test</artifactId><scope>test</scope></dependency>
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter</artifactId><scope>test</scope></dependency>
+        <!-- @formatter:on -->
+    </dependencies>
+</project>
