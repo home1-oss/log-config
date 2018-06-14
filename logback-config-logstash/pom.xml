@@ -6,16 +6,15 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>log-config</artifactId>
-        <version>0.0.3.OSS-SNAPSHOT</version>
+        <version>0.0.4.OSS-SNAPSHOT</version>
     </parent>
 
-    <artifactId>logback-logstash-config</artifactId>
+    <artifactId>logback-config-logstash</artifactId>
     <description>Logback to logstash config</description>
-    <name>logback-logstash-config</name>
+    <name>logback-config-logstash</name>
     <packaging>jar</packaging>
 
     <properties>
-        <logstash.logback.version>5.0</logstash.logback.version>
     </properties>
 
     <build>
@@ -23,8 +22,8 @@
 
     <dependencies>
         <!-- @formatter:off -->
-        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-logging</artifactId><scope>compile</scope></dependency>
-        <dependency><groupId>net.logstash.logback</groupId><artifactId>logstash-logback-encoder</artifactId><version>${logstash.logback.version}</version></dependency>
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-logging</artifactId></dependency>
+        <dependency><groupId>net.logstash.logback</groupId><artifactId>logstash-logback-encoder</artifactId></dependency>
         <!-- @formatter:on -->
     </dependencies>
 </project>
