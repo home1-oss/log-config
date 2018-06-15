@@ -6,13 +6,13 @@
         <!-- default log file name -->
         <!-- Priority: INSTANCE_NAME (from docker), ${hostname} (from log4j2) -->
         <Property name="defaultLoggingFile">${env:INSTANCE_NAME:-${hostName}}</Property>
-        <Property name="loggingFileFromEnv">${env:LOGGING_FILE}</Property>
+        <Property name="loggingFileFromEnv">${env:LOG_FILE}</Property>
         <Property name="loggingFile">${loggingFileFromEnv:-${defaultLoggingFile}}</Property>
 
         <!-- default log directory name -->
         <Property name="applicationName">${env:SPRING_APPLICATION_NAME:-application}</Property>
         <Property name="defaultLoggingPath">${sys:user.dir}/data/logs/${applicationName}</Property>
-        <Property name="loggingPath">${env:LOGGING_PATH:-${defaultLoggingPath}}</Property>
+        <Property name="loggingPath">${env:LOG_PATH:-${defaultLoggingPath}}</Property>
     </Properties>
 
     <Appenders>
@@ -22,17 +22,18 @@
             </PatternLayout>
         </Console>
         <RollingRandomAccessFile
-                name="FILE"
+                name="ROLLING_FILE"
                 fileName="${loggingPath}/${loggingFile}.log"
                 filePattern="${loggingPath}/$${date:yyyy-MM}/${loggingFile}-%d{yyyy-MM-dd}-%i.log"
-                immediateFlush="false" append="true" bufferSize="524288"
+                immediateFlush="true" append="true" bufferSize="524288"
         >
             <PatternLayout charset="UTF-8" >
                 <Pattern>%d{ISO8601}{GMT+8} %p %c{1.} [%t] %m%n</Pattern>
             </PatternLayout>
             <Policies>
-                <TimeBasedTriggeringPolicy/>
+                <OnStartupTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="512 MB"/>
+                <TimeBasedTriggeringPolicy/>
             </Policies>
             <DefaultRolloverStrategy>
                 <Delete basePath="${loggingPath}" maxDepth="2">
@@ -50,7 +51,7 @@
     <Loggers>
         <!-- level="${env:LOGGING_LEVEL_:-DEBUG}" on logger here will override spring-boot's logging.level.${loggerName}: ${logLevel} -->
         <Root includeLocation="false">
-            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ROLLING_FILE"/>
             <AppenderRef ref="STDOUT"/>
         </Root>
     </Loggers>
