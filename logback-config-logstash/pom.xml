@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>log-config</artifactId>
-        <version>0.0.5.OSS</version>
+        <version>0.0.6.OSS</version>
     </parent>
 
     <artifactId>logback-config-logstash</artifactId>
@@ -22,7 +22,10 @@
 
     <dependencies>
         <!-- @formatter:off -->
-        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-logging</artifactId></dependency>
+        <dependency><groupId>org.slf4j</groupId><artifactId>jcl-over-slf4j</artifactId><scope>compile</scope></dependency>
+        <dependency><groupId>org.slf4j</groupId><artifactId>jul-to-slf4j</artifactId></dependency>
+        <dependency><groupId>org.slf4j</groupId><artifactId>log4j-over-slf4j</artifactId><scope>runtime</scope></dependency>
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-logging</artifactId><scope>compile</scope></dependency>
         <dependency><groupId>net.logstash.logback</groupId><artifactId>logstash-logback-encoder</artifactId></dependency>
         <!-- @formatter:on -->
     </dependencies>
