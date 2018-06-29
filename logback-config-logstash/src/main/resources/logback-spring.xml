@@ -43,7 +43,7 @@
     </appender>
 
     <springProfile name="develop.env">
-        <root level="DEBUG">
+        <root>
             <appender-ref ref="STDOUT"/>
         </root>
     </springProfile>
@@ -53,7 +53,7 @@
             <destination>${logstashDestination}</destination>
             <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
         </appender>
-        <root level="DEBUG">
+        <root>
             <appender-ref ref="STDOUT"/>
             <appender-ref ref="ERROR"/>
             <appender-ref ref="FILE"/>
@@ -62,7 +62,7 @@
     </springProfile>
 
     <springProfile name="staging.env">
-        <root level="INFO">
+        <root>
             <appender-ref ref="STDOUT"/>
             <appender-ref ref="ERROR"/>
             <appender-ref ref="FILE"/>
@@ -74,7 +74,7 @@
             <destination>${logstashDestination}</destination>
             <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
         </appender>
-        <root level="INFO">
+        <root>
             <appender-ref ref="ERROR"/>
             <appender-ref ref="STDOUT"/>
             <appender-ref ref="FILE"/>
