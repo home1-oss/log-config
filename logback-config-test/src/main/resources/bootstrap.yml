@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: develop.env
+  application:
+    name: logback-config-test
+  cloud:
+    config:
+      label: develop
+      profile: develop.env,port_secure
+      discovery:
+        enabled: true
+        service-id: config-server
+      name: guardian
+      username: guardian
+      password: guardian-config_pass
+server:
+  port: 7788
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:user_pass@192.168.1.5:8761/eureka/
