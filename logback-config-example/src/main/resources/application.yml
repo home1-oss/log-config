@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: develop.env
+  application:
+    name: logback-config-example
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${EUREKA_INSTANCE_HOSTNAME:${SPRING_CLOUD_CLIENT_HOSTNAME:${EUREKA_INSTANCE_IPADDRESS:${HOST_IPADDRESS:0.0.0.0}}}}:${EUREKA_INSTANCE_SECUREPORT:${SERVER_PORT:${server.port:}}}
+server:
+  port: 7788
+
