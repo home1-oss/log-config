@@ -9,9 +9,9 @@
         <version>0.0.8.OSS-SNAPSHOT</version>
     </parent>
 
-    <artifactId>logback-config-test</artifactId>
+    <artifactId>logback-test-config</artifactId>
     <description>Logback config for tests</description>
-    <name>logback-config-test</name>
+    <name>logback-test-config</name>
     <packaging>jar</packaging>
 
     <properties>

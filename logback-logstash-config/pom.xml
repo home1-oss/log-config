@@ -9,9 +9,9 @@
         <version>0.0.8.OSS-SNAPSHOT</version>
     </parent>
 
-    <artifactId>log4j2-config-rolling</artifactId>
-    <description>Log4j2 rolling file config</description>
-    <name>log4j2-config-rolling</name>
+    <artifactId>logback-logstash-config</artifactId>
+    <description>Logback to logstash config</description>
+    <name>logback-logstash-config</name>
     <packaging>jar</packaging>
 
     <properties>
@@ -22,10 +22,7 @@
 
     <dependencies>
         <!-- @formatter:off -->
-        <dependency><groupId>com.lmax</groupId><artifactId>disruptor</artifactId><scope>runtime</scope></dependency>
-        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-log4j2</artifactId></dependency>
-        <!--<dependency><groupId>org.apache.logging.log4j</groupId><artifactId>log4j-1.2-api</artifactId></dependency>-->
-        <!--<dependency><groupId>org.apache.logging.log4j</groupId><artifactId>log4j-web</artifactId></dependency>-->
+        <dependency><groupId>${project.groupId}</groupId><artifactId>logback-logstash-deps</artifactId><version>${project.version}</version></dependency>
         <!-- @formatter:on -->
     </dependencies>
 </project>

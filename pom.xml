@@ -41,10 +41,11 @@
     </dependencyManagement>
 
     <modules>
-        <module>log4j2-config-rolling</module>
-        <module>log4j2-config-test</module>
-        <module>logback-config-logstash</module>
-        <module>logback-config-test</module>
+        <module>log4j2-rolling-config</module>
+        <module>log4j2-test-config</module>
+        <module>logback-logstash-deps</module>
+        <module>logback-logstash-config</module>
+        <module>logback-test-config</module>
     </modules>
 
     <!-- @formatter:off -->
