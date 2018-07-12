@@ -1,11 +1,14 @@
 package logback.example.service;
 
-import ch.qos.logback.classic.LoggerContext;
-import org.apache.commons.lang3.StringUtils;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
 import org.slf4j.event.Level;
 import org.springframework.stereotype.Service;
+
+import ch.qos.logback.classic.LoggerContext;
 
 /**
  * Created by: Song Feng
@@ -16,38 +19,43 @@ import org.springframework.stereotype.Service;
 @Service
 public class LogService {
 
-    public void doLog(String loggerName, Level level, String message) throws RuntimeException {
-        Logger logger;
-        if (StringUtils.isNotBlank(loggerName)) {
-            logger = LoggerFactory.getLogger(loggerName);
-        } else {
-            logger = LoggerFactory.getLogger(LogService.class);
-        }
+  public void doLog(final String loggerName, final Level level, final String message) {
+    this.doLog(loggerName, null, level, message);
+  }
 
-        switch (level) {
-            case TRACE:
-                logger.trace(message);
-                break;
-            case DEBUG:
-                logger.debug(message);
-                break;
-            case INFO:
-                logger.info(message);
-                break;
-            case WARN:
-                logger.warn(message);
-                break;
-            case ERROR:
-                logger.error(message);
-                break;
-            default:
-                throw new RuntimeException("unknown log level: " + level.name());
-        }
+  public void doLog(final String loggerName, final Marker marker, final Level level, final String message) {
+    final Logger logger = isNotBlank(loggerName) ? //
+        LoggerFactory.getLogger(loggerName) : LoggerFactory.getLogger(LogService.class);
 
+    switch (level) {
+      case TRACE: {
+        logger.trace(marker, message);
+        break;
+      }
+      case DEBUG: {
+        logger.debug(marker, message);
+        break;
+      }
+      case INFO: {
+        logger.info(marker, message);
+        break;
+      }
+      case WARN: {
+        logger.warn(marker, message);
+        break;
+      }
+      case ERROR: {
+        logger.error(marker, message);
+        break;
+      }
+      default: {
+        throw new IllegalArgumentException("unknown log level: " + level.name());
+      }
     }
+  }
 
-    public String getLogProperty(String propertyName) {
-        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-        return lc.getProperty(propertyName);
-    }
+  public String getLogProperty(final String propertyName) {
+    final LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+    return lc.getProperty(propertyName);
+  }
 }

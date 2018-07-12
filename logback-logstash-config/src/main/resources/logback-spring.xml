@@ -4,10 +4,14 @@
     <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
     <property name="LOG_PATH" value="${LOGGING_PATH:-data/logs}"/>
     <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+
     <springProperty scope="context" name="application" source="spring.application.name" defaultValue="application"/>
-    <springProperty scope="context" name="logstashDestination" source="logging.logstash.destination" defaultValue="127.0.0.1:51401"/>
-    <springProperty scope="context" name="port" source="server.port" defaultValue="-1"/>
     <springProperty scope="context" name="instanceId" source="eureka.instance.instance-id" defaultValue="${application}_${port}"/>
+    <springProperty scope="context" name="logstashDestination" source="logging.logstash.destination" defaultValue="127.0.0.1:51401"/>
+    <springProperty scope="context" name="module" source="spring.application.name" defaultValue="application"/>
+    <springProperty scope="context" name="port" source="server.port" defaultValue="-1"/>
+    <springProperty scope="context" name="project" source="spring.spring.config.name" defaultValue="project"/>
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${FILE_LOG_PATTERN}</pattern>
@@ -42,41 +46,29 @@
         </filter>
     </appender>
 
-    <springProfile name="develop.env">
-        <root>
-            <appender-ref ref="STDOUT"/>
-        </root>
-    </springProfile>
+    <root>
+        <appender-ref ref="STDOUT"/>
+    </root>
 
-    <springProfile name="test.env">
+    <springProfile name="develop.env,staging.env,production.env">
         <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
             <destination>${logstashDestination}</destination>
             <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
         </appender>
         <root>
-            <appender-ref ref="STDOUT"/>
             <appender-ref ref="ERROR"/>
             <appender-ref ref="FILE"/>
             <appender-ref ref="LOGSTASH"/>
         </root>
     </springProfile>
 
-    <springProfile name="staging.env">
-        <root>
-            <appender-ref ref="STDOUT"/>
-            <appender-ref ref="ERROR"/>
-            <appender-ref ref="FILE"/>
-        </root>
-    </springProfile>
-
-    <springProfile name="production.env">
+    <springProfile name="log_config_test">
         <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
             <destination>${logstashDestination}</destination>
             <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
         </appender>
         <root>
             <appender-ref ref="ERROR"/>
-            <appender-ref ref="STDOUT"/>
             <appender-ref ref="FILE"/>
             <appender-ref ref="LOGSTASH"/>
         </root>

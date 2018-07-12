@@ -46,6 +46,7 @@
         <module>logback-logstash-deps</module>
         <module>logback-logstash-config</module>
         <module>logback-test-config</module>
+        <module>logback-example</module>
     </modules>
 
     <!-- @formatter:off -->
