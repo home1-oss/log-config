@@ -22,7 +22,7 @@ import java.io.PrintStream;
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = {
     "debug=false", // debug=false can not disable AUTO-CONFIGURATION REPORT
-    "logging.level.=INFO"
+    "logging.level.root=INFO"
 })
 @Import(LoggingTestApplication.class)
 @Slf4j
