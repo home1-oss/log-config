@@ -54,7 +54,7 @@ cache:
 - "$HOME/.sonar/cache"
 
 # see: https://www.appveyor.com/docs/build-environment/
-stack: node 9, jdk 8, jdk 9
+stack: node 9, jdk 8, jdk 9, jdk 10
 
 install:
 - ls -al
@@ -82,6 +82,8 @@ install:
 - sh: sudo ln -s /usr/lib/jvm/java-8-openjdk-amd64 /usr/lib/jvm/java-8-oracle
 #- sh: ls -la /usr/lib/jvm/java-9-openjdk-amd64
 - sh: sudo ln -s /usr/lib/jvm/java-9-openjdk-amd64 /usr/lib/jvm/java-9-oracle
+#- sh: ls -la /usr/lib/jvm/java-10-openjdk-amd64
+- sh: sudo ln -s /usr/lib/jvm/java-10-openjdk-amd64 /usr/lib/jvm/java-10-oracle
 - sh: export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 - sh: export PATH=$JAVA_HOME:$PATH
 

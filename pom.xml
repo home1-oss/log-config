@@ -13,7 +13,7 @@
     <description>Log config file in classpath, avoid copy and paste log config file across projects</description>
     <name>log-config</name>
     <packaging>pom</packaging>
-    <version>0.0.7.OSS</version>
+    <version>0.0.8.OSS</version>
 
     <properties>
         <deps-spring-boot.version>0.0.4.OSS</deps-spring-boot.version>
@@ -41,10 +41,12 @@
     </dependencyManagement>
 
     <modules>
-        <module>log4j2-config-rolling</module>
-        <module>log4j2-config-test</module>
-        <module>logback-config-logstash</module>
-        <module>logback-config-test</module>
+        <module>log4j2-rolling-config</module>
+        <module>log4j2-test-config</module>
+        <module>logback-logstash-deps</module>
+        <module>logback-logstash-config</module>
+        <module>logback-test-config</module>
+        <module>logback-example</module>
     </modules>
 
     <!-- @formatter:off -->
