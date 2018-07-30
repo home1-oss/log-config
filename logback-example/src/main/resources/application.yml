@@ -5,7 +5,7 @@ spring:
     name: logback-example
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${EUREKA_INSTANCE_HOSTNAME:${SPRING_CLOUD_CLIENT_HOSTNAME:${EUREKA_INSTANCE_IPADDRESS:${HOST_IPADDRESS:0.0.0.0}}}}:${EUREKA_INSTANCE_SECUREPORT:${SERVER_PORT:${server.port:}}}
+    instance-id: ${spring.application.name}:${EUREKA_INSTANCE_HOSTNAME:${SPRING_CLOUD_CLIENT_HOSTNAME:${EUREKA_INSTANCE_IPADDRESS:${HOST_IPADDRESS:0.0.0.0}}}}:${EUREKA_INSTANCE_SECUREPORT:${SERVER_PORT:${server.port:8080}}}
 server:
   port: 7788
 
