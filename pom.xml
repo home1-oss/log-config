@@ -5,8 +5,8 @@
 
     <parent>
         <groupId>cn.home1</groupId>
-        <artifactId>maven-build-java8</artifactId>
-        <version>0.0.3.OSS</version>
+        <artifactId>maven-build</artifactId>
+        <version>0.0.9.OSS-SNAPSHOT</version>
     </parent>
 
     <artifactId>log-config</artifactId>
