@@ -13,7 +13,7 @@
     <description>Log config file in classpath, avoid copy and paste log config file across projects</description>
     <name>log-config</name>
     <packaging>pom</packaging>
-    <version>0.0.9.OSS</version>
+    <version>0.0.10.OSS-SNAPSHOT</version>
 
     <properties>
         <deps-spring-boot.version>0.0.4.OSS</deps-spring-boot.version>

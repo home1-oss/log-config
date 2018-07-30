@@ -5,7 +5,7 @@
     <parent>
         <artifactId>log-config</artifactId>
         <groupId>cn.home1</groupId>
-        <version>0.0.9.OSS</version>
+        <version>0.0.10.OSS-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
