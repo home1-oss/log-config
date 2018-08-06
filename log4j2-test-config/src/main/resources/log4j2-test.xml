@@ -12,7 +12,14 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root includeLocation="false">
+        <!-- see: https://www.testcontainers.org/usage.html#logging -->
+        <Logger name="org.testcontainers" level="INFO"/>
+        <Logger name="org.apache.http" level="WARN"/>
+        <Logger name="com.github.dockerjava" level="WARN"/>
+        <Logger name="org.zeroturnaround.exec" level="WARN"/>
+
+        <!-- completely no log out if attribute 'level' of tag 'Root' absent -->
+        <Root level="${env:LOGGING_LEVEL_ROOT:-DEBUG}" includeLocation="false">
             <AppenderRef ref="STDOUT"/>
         </Root>
     </Loggers>
