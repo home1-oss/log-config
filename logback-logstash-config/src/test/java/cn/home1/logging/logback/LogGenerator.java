@@ -1,8 +1,7 @@
-package logback.example;
+package cn.home1.logging.logback;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
@@ -13,7 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.TimeUnit;
 
-import logback.example.service.LogService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LogbackApplication.class)
