@@ -15,6 +15,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 
 
+/**
+ * see: https://jsoftbiz.wordpress.com/2011/11/29/unit-testing-asserting-that-a-line-was-logged-by-logback/
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LogbackApplication.class)
 @Slf4j
