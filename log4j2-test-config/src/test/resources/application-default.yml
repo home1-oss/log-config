@@ -1,7 +1,7 @@
 
 logging:
   # must set logging.config or log4j2 can not find config files with non-standard names automatically
-  config: classpath:log4j2-test-spring.xml
+  config: classpath:log4j2-test.xml
   level:
     jndi: ${LOGGING_LEVEL_ROOT:INFO}
     org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor: WARN
