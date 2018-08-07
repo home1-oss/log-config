@@ -4,8 +4,8 @@
 <Configuration status="WARN">
     <Properties>
         <!-- default log file name -->
-        <!-- Priority: INSTANCE_NAME (from docker), ${hostname} (from log4j2) -->
-        <Property name="defaultLoggingFile">${env:INSTANCE_NAME:-${hostName}}</Property>
+        <!-- Priority: CONTAINER_HOST_NAME (from docker), ${hostname} (from log4j2) -->
+        <Property name="defaultLoggingFile">${env:CONTAINER_HOST_NAME:-${hostName}}</Property>
         <Property name="loggingFileFromEnv">${env:LOG_FILE}</Property>
         <Property name="loggingFile">${loggingFileFromEnv:-${defaultLoggingFile}}</Property>
 
