@@ -6,20 +6,14 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>maven-build</artifactId>
-        <version>0.1.3</version>
+        <version>0.2.1</version>
     </parent>
 
     <artifactId>log-config</artifactId>
     <description>Log config file in classpath, avoid copy and paste log config file across projects</description>
     <name>log-config</name>
     <packaging>pom</packaging>
-    <version>0.1.1</version>
-
-    <properties>
-        <deps-spring-boot.version>0.1.1</deps-spring-boot.version>
-        <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
-        <system-rules.version>1.18.0</system-rules.version>
-    </properties>
+    <version>0.1.2</version>
 
     <build>
     </build>
@@ -46,7 +40,6 @@
         <module>logback-logstash-deps</module>
         <module>logback-logstash-config</module>
         <module>logback-test-config</module>
-        <module>logback-example</module>
     </modules>
 
     <!-- @formatter:off -->
@@ -77,4 +70,10 @@
         </pluginRepository>
     </pluginRepositories>
     <!-- @formatter:on -->
+
+    <properties>
+        <deps-spring-boot.version>0.1.6</deps-spring-boot.version>
+        <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
+        <system-rules.version>1.18.0</system-rules.version>
+    </properties>
 </project>

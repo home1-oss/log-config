@@ -1,4 +1,4 @@
-package logback.example.service;
+package cn.home1.logging.logback;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -15,7 +15,6 @@ import ch.qos.logback.classic.LoggerContext;
  * Created time: 2018/7/5
  * Description:
  */
-
 @Service
 public class LogService {
 

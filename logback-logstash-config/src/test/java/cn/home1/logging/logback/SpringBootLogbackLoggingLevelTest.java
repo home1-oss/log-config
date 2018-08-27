@@ -1,7 +1,8 @@
-package logback.example;
+package cn.home1.logging.logback;
 
-import logback.example.service.LogService;
 import lombok.extern.slf4j.Slf4j;
+
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;

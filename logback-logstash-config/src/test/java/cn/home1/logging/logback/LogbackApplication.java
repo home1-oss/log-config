@@ -1,4 +1,4 @@
-package logback.example;
+package cn.home1.logging.logback;
 
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.core.util.StatusPrinter;
