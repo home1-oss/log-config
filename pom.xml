@@ -35,9 +35,10 @@
     </dependencyManagement>
 
     <modules>
+        <module>example-logback-application</module>
         <module>log4j2-rolling-config</module>
         <module>log4j2-test-config</module>
-        <module>logback-logstash-deps</module>
+        <module>logback-gelf-config</module>
         <module>logback-logstash-config</module>
         <module>logback-test-config</module>
     </modules>

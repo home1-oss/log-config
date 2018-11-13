@@ -13,3 +13,9 @@ git.properties
 
 target
 *.log
+
+logback-spring.bak.*
+
+example-logback-application/data
+logback-gelf-config/data
+logback-logstash-config/data

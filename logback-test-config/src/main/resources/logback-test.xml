@@ -6,16 +6,7 @@
     <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}tests.log}"/>
     <!-- https://github.com/spring-projects/spring-boot/blob/master/spring-boot-project/spring-boot/src/main/resources/org/springframework/boot/logging/logback/console-appender.xml -->
     <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
-
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <encoder>
-            <pattern>[${application}] ${FILE_LOG_PATTERN}</pattern>
-        </encoder>
-        <file>${LOG_FILE}</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_FILE}.%d</fileNamePattern>
-        </rollingPolicy>
-    </appender>
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
 
     <!-- see: https://www.testcontainers.org/usage.html#logging -->
     <logger name="org.testcontainers" level="INFO"/>

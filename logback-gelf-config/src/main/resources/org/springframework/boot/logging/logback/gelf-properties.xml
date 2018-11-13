@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Default logback configuration provided for import.
+-->
+
+<included>
+    <!-- All -->
+    <springProperty scope="context" name="gelfHost" source="logging.gelf.host" defaultValue="127.0.0.1"/>
+    <springProperty scope="context" name="gelfPort" source="logging.gelf.port" defaultValue="12201"/>
+
+    <property name="GELF_LAYOUT_ORIGIN_HOST" value="${GELF_LAYOUT_ORIGIN_HOST:-localhost}"/>
+    <property name="GELF_LAYOUT_INCLUDE_RAW_MESSAGE" value="${GELF_LAYOUT_INCLUDE_RAW_MESSAGE:-false}"/>
+    <property name="GELF_LAYOUT_INCLUDE_MARKER" value="${GELF_LAYOUT_INCLUDE_MARKER:-true}"/>
+    <property name="GELF_LAYOUT_INCLUDE_MDC_DATA" value="${GELF_LAYOUT_INCLUDE_MDC_DATA:-true}"/>
+    <property name="GELF_LAYOUT_INCLUDE_CALLER_DATA" value="${GELF_LAYOUT_INCLUDE_CALLER_DATA:-true}"/>
+    <property name="GELF_LAYOUT_INCLUDE_ROOT_CAUSE_DATA" value="${GELF_LAYOUT_INCLUDE_ROOT_CAUSE_DATA:-true}"/>
+    <property name="GELF_LAYOUT_INCLUDE_LEVEL_NAME" value="${GELF_LAYOUT_INCLUDE_LEVEL_NAME:-true}"/>
+    <property name="GELF_LAYOUT_SHORT_PATTERN" value="${GELF_LAYOUT_SHORT_PATTERN:-%m%nopex}"/>
+    <property name="GELF_LAYOUT_FULL_PATTERN" value="${GELF_LAYOUT_FULL_PATTERN:-%m}"/>
+    <property name="GELF_LAYOUT_STATIC_FIELD_APP_NAME" value="${GELF_LAYOUT_STATIC_FIELD_APP_NAME:-application}"/>
+
+    <!-- TCP and TLS -->
+    <property name="GELF_CONNECT_TIMEOUT" value="${GELF_CONNECT_TIMEOUT:-15000}"/>
+    <property name="GELF_RECONNECT_INTERVAL" value="${GELF_RECONNECT_INTERVAL:-300}"/>
+    <property name="GELF_MAX_RETRIES" value="${GELF_MAX_RETRIES:-9}"/>
+    <property name="GELF_RETRY_DELAY" value="${GELF_RETRY_DELAY:-3000}"/>
+    <property name="GELF_POOL_SIZE" value="${GELF_POOL_SIZE:-2}"/>
+    <property name="GELF_POOL_MAX_WAIT_TIME" value="${GELF_POOL_MAX_WAIT_TIME:-5000}"/>
+
+    <!-- TLS only -->
+    <property name="GELF_TRUST_ALL_CERTIFICATES" value="${GELF_TRUST_ALL_CERTIFICATES:-true}"/>
+
+    <!-- UDP only -->
+    <property name="GELF_MAX_CHUNK_SIZE" value="${GELF_MAX_CHUNK_SIZE:-508}"/>
+    <property name="GELF_USE_COMPRESSION" value="${GELF_USE_COMPRESSION:-true}"/>
+</included>
