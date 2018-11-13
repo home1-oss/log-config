@@ -1,8 +1,16 @@
+eureka:
+  instance:
+    instance-id: ${spring.application.name:application}:${EUREKA_INSTANCE_HOSTNAME:${SPRING_CLOUD_CLIENT_HOSTNAME:${EUREKA_INSTANCE_IPADDRESS:${HOST_IPADDRESS:${spring.cloud.client.ip-address:${spring.cloud.client.ipAddress:127.0.0.1}}}}}}:${EUREKA_INSTANCE_SECUREPORT:${SERVER_PORT:${server.port:-1}}}
+
 # LOG_FILE_MAX_SIZE=10MB
 # LOG_FILE_MAX_HISTORY=30
 logging:
   #file: ${LOGGING_FILE:${LOG_FILE:${LOG_PATH:${LOG_TEMP:${java.io.tmpdir:/tmp}}}/spring.log}}
-  file: ${LOGGING_FILE:${LOG_FILE:${logging.path:${LOGGING_PATH:${LOG_PATH:${LOG_TEMP:data/logs}}}}/${EUREKA_INSTANCE_INSTANCEID:${eureka.instance.instance-id:${spring.application.name:application}:${EUREKA_INSTANCE_IPADDRESS:${HOST_IPADDRESS:${spring.cloud.client.ip-address:${spring.cloud.client.ipAddress:127.0.0.1}}}}:${SERVER_PORT:${server.port:8080}}}}.log}}
+  file: ${LOGGING_FILE:${LOG_FILE:${logging.path:${LOGGING_PATH:${LOG_PATH:${LOG_TEMP:data/logs}}}}/${EUREKA_INSTANCE_INSTANCEID:${eureka.instance.instance-id:application:127.0.0.1:-1}}.log}}
+
+  gelf:
+    host: ${LOGGING_GELF_HOST:127.0.0.1}
+    port: ${LOGGING_GELF_PORT:12201}
 
   # custom property
   logstash.destination: ${LOGGING_LOGSTASH_DESTINATION:127.0.0.1:51401}

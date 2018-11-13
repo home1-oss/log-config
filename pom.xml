@@ -30,6 +30,12 @@
             </dependency>
 
             <dependency><groupId>com.github.stefanbirkner</groupId><artifactId>system-rules</artifactId><version>${system-rules.version}</version></dependency>
+
+            <dependency><groupId>${project.groupId}</groupId><artifactId>log4j2-rolling-config</artifactId><version>${project.version}</version></dependency>
+            <dependency><groupId>${project.groupId}</groupId><artifactId>log4j2-test-config</artifactId><version>${project.version}</version></dependency>
+            <dependency><groupId>${project.groupId}</groupId><artifactId>logback-gelf-config</artifactId><version>${project.version}</version></dependency>
+            <dependency><groupId>${project.groupId}</groupId><artifactId>logback-logstash-config</artifactId><version>${project.version}</version></dependency>
+            <dependency><groupId>${project.groupId}</groupId><artifactId>logback-test-config</artifactId><version>${project.version}</version></dependency>
             <!-- @formatter:on -->
         </dependencies>
     </dependencyManagement>

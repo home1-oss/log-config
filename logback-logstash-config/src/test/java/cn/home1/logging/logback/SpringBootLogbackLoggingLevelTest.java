@@ -60,9 +60,8 @@ public class SpringBootLogbackLoggingLevelTest {
     @Test
     public void testReadSpringProperty() {
         String applicationName = environment.getProperty("spring.application.name");
-        assertEquals(logService.getLogProperty("application"), applicationName);
+        assertEquals(applicationName, logService.getLogProperty("application"));
 
-        String instanceId = environment.getProperty("eureka.instance.instance-id");
-        assertEquals(logService.getLogProperty("instanceId"), instanceId);
+        //String instanceId = environment.getProperty("eureka.instance.instance-id");
     }
 }

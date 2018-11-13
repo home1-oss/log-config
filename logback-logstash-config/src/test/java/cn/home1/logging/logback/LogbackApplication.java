@@ -4,8 +4,10 @@ import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.core.util.StatusPrinter;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Created by: Song Feng
@@ -22,5 +24,17 @@ public class LogbackApplication {
         // print logback's internal status
         LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
         StatusPrinter.print(lc);
+    }
+
+    @Bean
+    public CommandLineRunner init() {
+
+        return new CommandLineRunner() {
+            @Override
+            public void run(final String... strings) throws Exception {
+                log.error("Hello World!");
+            }
+        };
+
     }
 }

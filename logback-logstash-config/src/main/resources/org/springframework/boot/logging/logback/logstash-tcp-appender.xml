@@ -7,7 +7,7 @@ File appender logback configuration provided for import.
 <included>
     <springProperty scope="context" name="logstashDestination" source="logging.logstash.destination" defaultValue="127.0.0.1:51401"/>
 
-    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+    <appender name="LOGSTASH_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>${logstashDestination}</destination>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>

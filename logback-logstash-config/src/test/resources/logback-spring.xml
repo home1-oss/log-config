@@ -1,76 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--See https://logback.qos.ch/manual/configuration.html for details-->
 <configuration debug="false">
-    <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
-    <property name="LOG_PATH" value="${LOGGING_PATH:-data/logs}"/>
-    <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+    <!--<property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>-->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <include resource="org/springframework/boot/logging/logback/error-file-appender.xml"/>
 
     <springProperty scope="context" name="application" source="spring.application.name" defaultValue="application"/>
-    <springProperty scope="context" name="instanceId" source="eureka.instance.instance-id" defaultValue="${application}_${port}"/>
     <springProperty scope="context" name="logstashDestination" source="logging.logstash.destination" defaultValue="127.0.0.1:51401"/>
     <springProperty scope="context" name="module" source="spring.application.name" defaultValue="application"/>
-    <springProperty scope="context" name="port" source="server.port" defaultValue="-1"/>
     <springProperty scope="context" name="project" source="spring.spring.config.name" defaultValue="project"/>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>
-            ${LOG_PATH}/stdout-${instanceId}.log
-        </file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <maxHistory>90</maxHistory>
-            <fileNamePattern>${LOG_PATH}/stdout-${instanceId}-%d{yyyy-MM-dd}.log</fileNamePattern>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <maxHistory>90</maxHistory>
-            <fileNamePattern>${LOG_PATH}/error-${instanceId}-%d{yyyy-MM-dd}.log</fileNamePattern>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-        </encoder>
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>ERROR</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-    </appender>
-
-    <root>
-        <appender-ref ref="STDOUT"/>
-    </root>
-
     <springProfile name="develop.env,staging.env,production.env">
-        <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <appender name="LOGSTASH_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
             <destination>${logstashDestination}</destination>
             <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
         </appender>
         <root>
-            <appender-ref ref="ERROR"/>
-            <appender-ref ref="FILE"/>
-            <appender-ref ref="LOGSTASH"/>
+            <appender-ref ref="FILE_ERR"/>
+            <appender-ref ref="LOGSTASH_TCP"/>
         </root>
     </springProfile>
 
     <springProfile name="log_config_test">
-        <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <appender name="LOGSTASH_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
             <destination>${logstashDestination}</destination>
             <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
         </appender>
         <root>
-            <appender-ref ref="ERROR"/>
-            <appender-ref ref="FILE"/>
-            <appender-ref ref="LOGSTASH"/>
+            <appender-ref ref="FILE_ERR"/>
+            <appender-ref ref="LOGSTASH_TCP"/>
         </root>
     </springProfile>
+
+    <jmxConfigurator/>
 </configuration>

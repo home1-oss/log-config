@@ -12,9 +12,8 @@ git.properties
 **/src/site/resources
 
 target
+*.bak
 *.log
-
-logback-spring.bak.*
 
 example-logback-application/data
 logback-gelf-config/data

@@ -1,11 +1,29 @@
-spring:
-  profiles:
-    active: develop.env
-  application:
-    name: logback-example
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${EUREKA_INSTANCE_HOSTNAME:${SPRING_CLOUD_CLIENT_HOSTNAME:${EUREKA_INSTANCE_IPADDRESS:${HOST_IPADDRESS:0.0.0.0}}}}:${EUREKA_INSTANCE_SECUREPORT:${SERVER_PORT:${server.port:8080}}}
-server:
-  port: 7788
+    instance-id: ${spring.application.name:application}:${EUREKA_INSTANCE_HOSTNAME:${SPRING_CLOUD_CLIENT_HOSTNAME:${EUREKA_INSTANCE_IPADDRESS:${HOST_IPADDRESS:${spring.cloud.client.ip-address:${spring.cloud.client.ipAddress:127.0.0.1}}}}}}:${EUREKA_INSTANCE_SECUREPORT:${SERVER_PORT:${server.port:-1}}}
 
+# LOG_FILE_MAX_SIZE=10MB
+# LOG_FILE_MAX_HISTORY=30
+logging:
+  #file: ${LOGGING_FILE:${LOG_FILE:${LOG_PATH:${LOG_TEMP:${java.io.tmpdir:/tmp}}}/spring.log}}
+  file: ${LOGGING_FILE:${LOG_FILE:${logging.path:${LOGGING_PATH:${LOG_PATH:${LOG_TEMP:data/logs}}}}/${EUREKA_INSTANCE_INSTANCEID:${eureka.instance.instance-id:application:127.0.0.1:-1}}.log}}
+
+  # custom property
+  logstash.destination: ${LOGGING_LOGSTASH_DESTINATION:127.0.0.1:51401}
+
+  #path: ${LOGGING_PATH:${LOG_PATH:${LOG_TEMP:${java.io.tmpdir:-/tmp}}}}
+  path: ${LOGGING_PATH:${LOG_PATH:${LOG_TEMP:data/logs}}}
+  pattern:
+    #console: %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+    console: "${LOGGING_PATTERN_CONSOLE:${CONSOLE_LOG_PATTERN:%clr(%d{${LOG_DATEFORMAT_PATTERN:yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(${PID: }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}}}"
+    #file: %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+    file: "${LOGGING_PATTERN_FILE:${FILE_LOG_PATTERN:%d{${LOG_DATEFORMAT_PATTERN:yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:%5p} ${PID: } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}}}"
+
+server:
+  port: ${SERVER_PORT:7788}
+
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:logback-example}
+  profiles:
+    active: develop.env
