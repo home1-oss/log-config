@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+File appender logback configuration provided for import.
+-->
+
+<included>
+    <include resource="org/springframework/boot/logging/logback/gelf-properties.xml" />
+
+    <appender name="GELF_UDP" class="de.siegmar.logbackgelf.GelfUdpAppender">
+        <graylogHost>${gelfHost}</graylogHost>
+        <graylogPort>${gelfPort}</graylogPort>
+        <maxChunkSize>${GELF_MAX_CHUNK_SIZE}</maxChunkSize>
+        <useCompression>${GELF_USE_COMPRESSION}</useCompression>
+
+
+
+
+
+        <layout class="de.siegmar.logbackgelf.GelfLayout">
+            <originHost>${GELF_LAYOUT_ORIGIN_HOST}</originHost>
+            <includeRawMessage>${GELF_LAYOUT_INCLUDE_RAW_MESSAGE}</includeRawMessage>
+            <includeMarker>${GELF_LAYOUT_INCLUDE_MARKER}</includeMarker>
+            <includeMdcData>${GELF_LAYOUT_INCLUDE_MDC_DATA}</includeMdcData>
+            <includeCallerData>${GELF_LAYOUT_INCLUDE_CALLER_DATA}</includeCallerData>
+            <includeRootCauseData>${GELF_LAYOUT_INCLUDE_ROOT_CAUSE_DATA}</includeRootCauseData>
+            <includeLevelName>${GELF_LAYOUT_INCLUDE_LEVEL_NAME}</includeLevelName>
+            <shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${GELF_LAYOUT_SHORT_PATTERN}</pattern>
+            </shortPatternLayout>
+            <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${GELF_LAYOUT_FULL_PATTERN}</pattern>
+            </fullPatternLayout>
+            <staticField>app_name:${GELF_LAYOUT_STATIC_FIELD_APP_NAME}</staticField>
+            <staticField>project:${project}</staticField>
+            <staticField>application:${application}</staticField>
+            <staticField>os_arch:${os.arch}</staticField>
+            <staticField>os_name:${os.name}</staticField>
+            <staticField>os_version:${os.version}</staticField>
+        </layout>
+    </appender>
+</included>

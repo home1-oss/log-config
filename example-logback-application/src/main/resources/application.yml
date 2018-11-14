@@ -8,6 +8,10 @@ logging:
   #file: ${LOGGING_FILE:${LOG_FILE:${LOG_PATH:${LOG_TEMP:${java.io.tmpdir:/tmp}}}/spring.log}}
   file: ${LOGGING_FILE:${LOG_FILE:${logging.path:${LOGGING_PATH:${LOG_PATH:${LOG_TEMP:data/logs}}}}/${EUREKA_INSTANCE_INSTANCEID:${eureka.instance.instance-id:application:127.0.0.1:-1}}.log}}
 
+  gelf:
+    host: ${LOGGING_GELF_HOST:127.0.0.1}
+    port: ${LOGGING_GELF_PORT:12201}
+
   # custom property
   logstash.destination: ${LOGGING_LOGSTASH_DESTINATION:127.0.0.1:51401}
 
@@ -20,13 +24,11 @@ logging:
     file: "${LOGGING_PATTERN_FILE:${FILE_LOG_PATTERN:%d{${LOG_DATEFORMAT_PATTERN:yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:%5p} ${PID: } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}}}"
 
 server:
-  port: ${SERVER_PORT:7788}
+  port: ${SERVER_PORT:8080}
 
 spring:
   application:
-    name: ${SPRING_APPLICATION_NAME:logback-example} # application/module in log
+    name: ${SPRING_APPLICATION_NAME:example-logback-application} # application/module in log
   cloud:
     config:
       name: ${SPRING_CLOUD_CONFIG_NAME:log-config} # project in log
-  profiles:
-    active: develop.env

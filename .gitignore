@@ -12,4 +12,9 @@ git.properties
 **/src/site/resources
 
 target
+*.bak
 *.log
+
+example-logback-application/data
+logback-gelf-config/data
+logback-logstash-config/data

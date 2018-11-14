@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--See https://logback.qos.ch/manual/configuration.html for details-->
+<configuration debug="false">
+    <!--<property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>-->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <include resource="org/springframework/boot/logging/logback/error-file-appender.xml"/>
+
+    <springProperty scope="context" name="project" source="spring.spring.config.name" defaultValue="unknown_project"/>
+    <springProperty scope="context" name="application" source="spring.application.name" defaultValue="unknown_application"/>
+
+    <springProperty scope="context" name="logstashDestination" source="logging.logstash.destination" defaultValue="127.0.0.1:51401"/>
+
+    <springProfile name="develop.env,staging.env,production.env">
+        <appender name="LOGSTASH_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+            <destination>${logstashDestination}</destination>
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+        </appender>
+        <root>
+            <appender-ref ref="FILE_ERR"/>
+            <appender-ref ref="LOGSTASH_TCP"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="log_config_test">
+        <appender name="LOGSTASH_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+            <destination>${logstashDestination}</destination>
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+        </appender>
+        <root>
+            <appender-ref ref="FILE_ERR"/>
+            <appender-ref ref="LOGSTASH_TCP"/>
+        </root>
+    </springProfile>
+
+    <jmxConfigurator/>
+</configuration>

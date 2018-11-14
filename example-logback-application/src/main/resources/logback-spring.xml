@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--See https://logback.qos.ch/manual/configuration.html for details-->
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <include resource="org/springframework/boot/logging/logback/error-file-appender.xml"/>
+
+    <include resource="org/springframework/boot/logging/logback/gelf-tcp-appender.xml"/>
+    <!--<include resource="org/springframework/boot/logging/logback/gelf-tls-appender.xml"/>-->
+    <!--<include resource="org/springframework/boot/logging/logback/gelf-udp-appender.xml"/>-->
+
+    <include resource="org/springframework/boot/logging/logback/logstash-tcp-appender.xml"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="LOGSTASH_TCP" />
+        <appender-ref ref="GELF_TCP_ASYNC" />
+    </root>
+
+    <jmxConfigurator/>
+</configuration>

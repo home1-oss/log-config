@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.home1</groupId>
+        <artifactId>log-config</artifactId>
+        <version>0.2.0</version>
+    </parent>
+
+    <artifactId>example-logback-application</artifactId>
+    <description>Example application</description>
+    <name>example-logback-application</name>
+    <packaging>jar</packaging>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>1.6.8</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <!-- @formatter:off -->
+        <plugins>
+            <plugin><artifactId>maven-deploy-plugin</artifactId><configuration><skip>true</skip></configuration></plugin>
+            <plugin><artifactId>maven-javadoc-plugin</artifactId><configuration><attach>false</attach></configuration></plugin>
+            <plugin><artifactId>maven-source-plugin</artifactId><configuration><attach>false</attach></configuration></plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <configuration>
+                    <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <classifier>exec</classifier>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration><attach>false</attach></configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <!-- @formatter:on -->
+    </build>
+
+    <dependencies>
+        <!-- @formatter:off -->
+        <dependency><groupId>${project.groupId}</groupId><artifactId>logback-gelf-config</artifactId></dependency>
+        <dependency><groupId>${project.groupId}</groupId><artifactId>logback-logstash-config</artifactId></dependency>
+
+        <dependency><groupId>org.jolokia</groupId><artifactId>jolokia-core</artifactId></dependency>
+        <dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><scope>provided</scope></dependency>
+
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-actuator</artifactId></dependency>
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-undertow</artifactId></dependency>
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>
+        <!-- @formatter:on -->
+    </dependencies>
+
+    <properties>
+    </properties>
+</project>
