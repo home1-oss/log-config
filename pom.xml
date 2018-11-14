@@ -13,7 +13,7 @@
     <description>Log config file in classpath, avoid copy and paste log config file across projects</description>
     <name>log-config</name>
     <packaging>pom</packaging>
-    <version>0.2.0</version>
+    <version>0.2.1-SNAPSHOT</version>
 
     <build>
     </build>
