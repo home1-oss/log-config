@@ -32,6 +32,8 @@ File appender logback configuration provided for import.
                 <pattern>${GELF_LAYOUT_FULL_PATTERN}</pattern>
             </fullPatternLayout>
             <staticField>app_name:${GELF_LAYOUT_STATIC_FIELD_APP_NAME}</staticField>
+            <staticField>project:${project}</staticField>
+            <staticField>application:${application}</staticField>
             <staticField>os_arch:${os.arch}</staticField>
             <staticField>os_name:${os.name}</staticField>
             <staticField>os_version:${os.version}</staticField>

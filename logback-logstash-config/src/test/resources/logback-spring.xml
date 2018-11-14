@@ -6,10 +6,10 @@
 
     <include resource="org/springframework/boot/logging/logback/error-file-appender.xml"/>
 
-    <springProperty scope="context" name="application" source="spring.application.name" defaultValue="application"/>
+    <springProperty scope="context" name="project" source="spring.spring.config.name" defaultValue="unknown_project"/>
+    <springProperty scope="context" name="application" source="spring.application.name" defaultValue="unknown_application"/>
+
     <springProperty scope="context" name="logstashDestination" source="logging.logstash.destination" defaultValue="127.0.0.1:51401"/>
-    <springProperty scope="context" name="module" source="spring.application.name" defaultValue="application"/>
-    <springProperty scope="context" name="project" source="spring.spring.config.name" defaultValue="project"/>
 
     <springProfile name="develop.env,staging.env,production.env">
         <appender name="LOGSTASH_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">

@@ -24,6 +24,9 @@ server:
 
 spring:
   application:
-    name: ${SPRING_APPLICATION_NAME:logback-example}
+    name: ${SPRING_APPLICATION_NAME:logback-example} # application/module in log
+  cloud:
+    config:
+      name: ${SPRING_CLOUD_CONFIG_NAME:log-config} # project in log
   profiles:
     active: develop.env

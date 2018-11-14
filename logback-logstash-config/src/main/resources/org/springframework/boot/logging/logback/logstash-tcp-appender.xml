@@ -5,6 +5,9 @@ File appender logback configuration provided for import.
 -->
 
 <included>
+    <springProperty scope="context" name="project" source="spring.cloud.config.name" defaultValue="unknown_project"/>
+    <springProperty scope="context" name="application" source="spring.application.name" defaultValue="unknown_application"/>
+
     <springProperty scope="context" name="logstashDestination" source="logging.logstash.destination" defaultValue="127.0.0.1:51401"/>
 
     <appender name="LOGSTASH_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
