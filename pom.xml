@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>maven-build</artifactId>
-        <version>0.2.2</version>
+        <version>1.0.3</version>
     </parent>
 
     <artifactId>log-config</artifactId>
@@ -30,6 +30,8 @@
             </dependency>
 
             <dependency><groupId>com.github.stefanbirkner</groupId><artifactId>system-rules</artifactId><version>${system-rules.version}</version></dependency>
+
+            <dependency><groupId>org.codehaus.janino</groupId><artifactId>janino</artifactId><version>${janino.version}</version></dependency>
 
             <dependency><groupId>${project.groupId}</groupId><artifactId>log4j2-rolling-config</artifactId><version>${project.version}</version></dependency>
             <dependency><groupId>${project.groupId}</groupId><artifactId>log4j2-test-config</artifactId><version>${project.version}</version></dependency>
@@ -79,7 +81,8 @@
     <!-- @formatter:on -->
 
     <properties>
-        <deps-spring-boot.version>0.1.6</deps-spring-boot.version>
+        <deps-spring-boot.version>0.3.3</deps-spring-boot.version>
+        <janino.version>3.0.6</janino.version>
         <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
         <system-rules.version>1.18.0</system-rules.version>
     </properties>
