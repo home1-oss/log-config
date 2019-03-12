@@ -6,6 +6,7 @@
 
 *.asc
 git.properties
+*.versionsBackup
 
 **/src/site/markdown/README.md
 **/src/site/markdown/src/readme
