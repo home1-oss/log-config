@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>log-config</artifactId>
-        <version>0.2.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>logback-test-config</artifactId>
@@ -22,6 +22,7 @@
 
     <dependencies>
         <!-- @formatter:off -->
+        <dependency><groupId>org.codehaus.janino</groupId><artifactId>janino</artifactId><scope>runtime</scope></dependency>
         <dependency><groupId>org.slf4j</groupId><artifactId>jcl-over-slf4j</artifactId><scope>compile</scope></dependency>
         <dependency><groupId>org.slf4j</groupId><artifactId>jul-to-slf4j</artifactId></dependency>
         <dependency><groupId>org.slf4j</groupId><artifactId>log4j-over-slf4j</artifactId><scope>runtime</scope></dependency>
