@@ -2,6 +2,20 @@ eureka:
   instance:
     instance-id: ${spring.application.name:application}:${EUREKA_INSTANCE_HOSTNAME:${SPRING_CLOUD_CLIENT_HOSTNAME:${EUREKA_INSTANCE_IPADDRESS:${HOST_IPADDRESS:${spring.cloud.client.ip-address:${spring.cloud.client.ipAddress:127.0.0.1}}}}}}:${EUREKA_INSTANCE_SECUREPORT:${SERVER_PORT:${server.port:-1}}}
 
+# logging request & response info, style can be http, curl, json, splunk
+logbook:
+  format:
+    style: http
+  obfuscate:
+    headers:
+      #      - Authorization
+      - X-Secret
+    parameters:
+      - access_token
+      - password
+  write:
+    max-body-size: 2000
+
 # LOG_FILE_MAX_SIZE=10MB
 # LOG_FILE_MAX_HISTORY=30
 logging:

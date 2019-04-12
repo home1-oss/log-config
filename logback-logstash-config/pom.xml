@@ -19,12 +19,13 @@
 
     <!-- @formatter:off -->
     <dependencies>
+        <dependency><groupId>net.logstash.logback</groupId><artifactId>logstash-logback-encoder</artifactId><scope>compile</scope></dependency>
         <dependency><groupId>org.codehaus.janino</groupId><artifactId>janino</artifactId><scope>runtime</scope></dependency>
         <dependency><groupId>org.slf4j</groupId><artifactId>jcl-over-slf4j</artifactId><scope>compile</scope></dependency>
         <dependency><groupId>org.slf4j</groupId><artifactId>jul-to-slf4j</artifactId><scope>compile</scope></dependency>
         <dependency><groupId>org.slf4j</groupId><artifactId>log4j-over-slf4j</artifactId><scope>runtime</scope></dependency>
         <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-logging</artifactId><scope>compile</scope></dependency>
-        <dependency><groupId>net.logstash.logback</groupId><artifactId>logstash-logback-encoder</artifactId><scope>compile</scope></dependency>
+        <dependency><groupId>org.zalando</groupId><artifactId>logbook-spring-boot-starter</artifactId><scope>runtime</scope></dependency>
 
         <dependency><groupId>com.github.stefanbirkner</groupId><artifactId>system-rules</artifactId><scope>test</scope></dependency>
         <dependency><groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId><version>3.4</version><scope>test</scope></dependency>

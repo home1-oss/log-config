@@ -7,3 +7,9 @@
 
 
 Log config file in classpath, avoid copy &amp; paste log config file across projects
+
+## Build this project
+
+```bash
+JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home" mvn help:active-profiles clean install
+```
