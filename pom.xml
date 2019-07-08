@@ -6,14 +6,14 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>maven-build</artifactId>
-        <version>2.0.1-SNAPSHOT</version>
+        <version>3.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>log-config</artifactId>
     <description>Log config file in classpath, avoid copy and paste log config file across projects</description>
     <name>log-config</name>
     <packaging>pom</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
 
     <build>
     </build>
@@ -56,14 +56,14 @@
     <repositories>
         <!-- Make artifacts in OSSRH repositories available -->
         <repository>
-            <id>OSSRH-releases</id>
+            <id>ossrh-releases</id>
             <name>central releases</name>
             <url>https://oss.sonatype.org/content/repositories/releases/</url>
             <releases><enabled>true</enabled><updatePolicy>never</updatePolicy></releases>
             <snapshots><enabled>false</enabled></snapshots>
         </repository>
         <repository>
-            <id>OSSRH-snapshots</id>
+            <id>ossrh-snapshots</id>
             <name>central snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
             <releases><enabled>false</enabled></releases>
@@ -82,6 +82,10 @@
     <!-- @formatter:on -->
 
     <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
         <deps-spring-boot.version>2.0.1-SNAPSHOT</deps-spring-boot.version>
         <janino.version>3.0.6</janino.version>
         <logbook.version>1.13.0</logbook.version>
