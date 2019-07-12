@@ -13,7 +13,7 @@
     <description>Log config file in classpath, avoid copy and paste log config file across projects</description>
     <name>log-config</name>
     <packaging>pom</packaging>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>3.0.0</version>
 
     <build>
     </build>
@@ -56,15 +56,15 @@
     <repositories>
         <!-- Make artifacts in OSSRH repositories available -->
         <repository>
-            <id>ossrh-releases</id>
-            <name>central releases</name>
+            <id>ossrh-nexus2-releases</id>
+            <name>ossrh nexus2 releases</name>
             <url>https://oss.sonatype.org/content/repositories/releases/</url>
             <releases><enabled>true</enabled><updatePolicy>never</updatePolicy></releases>
             <snapshots><enabled>false</enabled></snapshots>
         </repository>
         <repository>
-            <id>ossrh-snapshots</id>
-            <name>central snapshots</name>
+            <id>ossrh-nexus2-snapshots</id>
+            <name>ossrh nexus2 snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
             <releases><enabled>false</enabled></releases>
             <snapshots><enabled>true</enabled><updatePolicy>daily</updatePolicy></snapshots>
