@@ -1,4 +1,18 @@
 
+# logging request & response info, style can be http, curl, json, splunk
+logbook:
+  format:
+    style: http
+  obfuscate:
+    headers:
+      #      - Authorization
+      - X-Secret
+    parameters:
+      - access_token
+      - password
+  write:
+    max-body-size: 2000
+
 logging:
   level:
     root: ${LOGGING_LEVEL_ROOT:WARN}

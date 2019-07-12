@@ -1,3 +1,17 @@
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+/.mvn/profiler-report/
+/.mvn/wagonRepository/
+
+# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+!/.mvn/wrapper/maven-wrapper.jar
 
 *.iml
 .idea/
@@ -12,7 +26,6 @@ git.properties
 **/src/site/markdown/src/readme
 **/src/site/resources
 
-target
 *.bak
 *.log
 
