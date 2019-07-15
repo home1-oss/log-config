@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>log-config</artifactId>
-        <version>3.0.0</version>
+        <version>3.0.1</version>
     </parent>
 
     <artifactId>logback-gelf-config</artifactId>

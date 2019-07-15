@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.home1</groupId>
         <artifactId>log-config</artifactId>
-        <version>3.0.0</version>
+        <version>3.0.1</version>
     </parent>
 
     <artifactId>example-logback-application</artifactId>
@@ -33,16 +33,20 @@
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <configuration>
+                    <skipLocalStaging>true</skipLocalStaging>
                     <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+                    <skipRemoteStaging>true</skipRemoteStaging>
+                    <skipStaging>true</skipStaging>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
+                <version>${version.spring-boot}</version>
                 <configuration>
                     <classifier>exec</classifier>
                     <layout>ZIP</layout>
+                    <skip>${maven.packages.skip}</skip>
                 </configuration>
                 <executions>
                     <execution>
@@ -73,5 +77,6 @@
     </dependencies>
 
     <properties>
+        <maven.packages.skip>false</maven.packages.skip>
     </properties>
 </project>
