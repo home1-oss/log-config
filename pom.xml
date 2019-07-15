@@ -14,7 +14,7 @@
     <groupId>cn.home1.log-config</groupId>
     <name>log-config</name>
     <packaging>pom</packaging>
-    <version>3.0.2-SNAPSHOT</version>
+    <version>3.0.2</version>
 
     <build>
     </build>
